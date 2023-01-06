@@ -406,7 +406,7 @@ fi
 
 { echo "" | cat - ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys; } && chmod 0600 ~/.ssh/authorized_keys
 echo -e "\nNoHostAuthenticationForLocalhost yes" >> ~/.ssh/config && chmod 0600 ~/.ssh/config
-ssh localhost whoami
+ssh -p 2222 localhost whoami
 
 # Workarounds for HDFS networking issues: On the minicluster, tests that rely
 # on WebHDFS may fail with "Connection refused" errors because the namenode
