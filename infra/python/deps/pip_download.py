@@ -89,7 +89,7 @@ def get_package_info(pkg_name, pkg_version):
   # We parse the page with regex instead of an html parser because that requires
   # downloading an extra package before running this script. Since the HTML is guaranteed
   # to be formatted according to PEP 503, this is acceptable.
-  pkg_info = subprocess.check_output(["wget", "-q", "-O", "-", url])
+  pkg_info = subprocess.check_output(["wget", "-q", "-O", "-", url]).decode('utf-8')
   regex = r'<a .*?href=\".*?packages/(.*?)#(.*?)=(.*?)\".*?>(.*?)<\/a>'
   for match in re.finditer(regex, pkg_info):
     path = match.group(1)
